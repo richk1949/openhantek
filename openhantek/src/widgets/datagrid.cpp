@@ -15,7 +15,7 @@ DataGrid::DataGrid(QWidget *parent) : QGroupBox(parent)
     cursorsSelectorGroup->setExclusive(true);
 
     connect(cursorsSelectorGroup,
-            static_cast<void(QButtonGroup::*)(int)>(&QButtonGroup::buttonPressed), [this] (int index) {
+            &QButtonGroup::idPressed, [this] (int index) {
         emit itemSelected(index);
     });
 
