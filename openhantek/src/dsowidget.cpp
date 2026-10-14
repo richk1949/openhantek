@@ -33,7 +33,7 @@ DsoWidget::DsoWidget(DsoSettingsScope *scope, DsoSettingsView *view, const Dso::
 
     // Palette for this widget
     QPalette palette;
-    palette.setColor(QPalette::Background, view->screen.background);
+    palette.setColor(QPalette::Window, view->screen.background);
     palette.setColor(QPalette::WindowText, view->screen.text);
 
     setupSliders(mainSliders);
@@ -230,7 +230,7 @@ DsoWidget::DsoWidget(DsoSettingsScope *scope, DsoSettingsView *view, const Dso::
 
     // The widget itself
     setPalette(palette);
-    setBackgroundRole(QPalette::Background);
+    setBackgroundRole(QPalette::Window);
     setAutoFillBackground(true);
     setLayout(mainLayout);
 
@@ -622,7 +622,7 @@ void DsoWidget::showNew(std::shared_ptr<PPresult> data) {
     if (spec->isSoftwareTriggerDevice) {
         QPalette triggerLabelPalette = palette();
         triggerLabelPalette.setColor(QPalette::WindowText, Qt::black);
-        triggerLabelPalette.setColor(QPalette::Background, data->softwareTriggerTriggered ? Qt::green : Qt::red);
+        triggerLabelPalette.setColor(QPalette::Window, data->softwareTriggerTriggered ? Qt::green : Qt::red);
         swTriggerStatus->setPalette(triggerLabelPalette);
         swTriggerStatus->setVisible(true);
     }
