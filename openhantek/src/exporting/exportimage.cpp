@@ -50,8 +50,8 @@ bool ExporterImage::save() {
     } else {
         // We need a QPrinter for printing, pdf- and ps-export
         std::unique_ptr<QPrinter> printer = std::unique_ptr<QPrinter>(new QPrinter(QPrinter::HighResolution));
-        printer->setOrientation(registry->settings->view.zoom ? QPrinter::Portrait : QPrinter::Landscape);
-        printer->setPageMargins(20, 20, 20, 20, QPrinter::Millimeter);
+        printer->setPageOrientation(registry->settings->view.zoom ? QPageLayout::Portrait : QPageLayout::Landscape);
+        printer->setPageMargins(QMarginsF(20, 20, 20, 20), QPageLayout::Millimeter);
         printer->setOutputFileName(fileDialog.selectedFiles().first());
         printer->setOutputFormat(QPrinter::PdfFormat);
         paintDevice = std::move(printer);

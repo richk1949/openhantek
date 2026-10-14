@@ -30,8 +30,8 @@ bool ExporterPrint::samples(const std::shared_ptr<PPresult> data) {
 bool ExporterPrint::save() {
     // We need a QPrinter for printing, pdf- and ps-export
     std::unique_ptr<QPrinter> printer = std::unique_ptr<QPrinter>(new QPrinter(QPrinter::HighResolution));
-    printer->setOrientation(registry->settings->view.zoom ? QPrinter::Portrait : QPrinter::Landscape);
-    printer->setPageMargins(20, 20, 20, 20, QPrinter::Millimeter);
+    printer->setPageOrientation(registry->settings->view.zoom ? QPageLayout::Portrait : QPageLayout::Landscape);
+    printer->setPageMargins(QMarginsF(20, 20, 20, 20), QPageLayout::Millimeter);
 
     // Show the printing dialog
     QPrintDialog dialog(printer.get());
