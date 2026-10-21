@@ -1,16 +1,17 @@
 project(OpenHantek CXX)
 
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5PrintSupport REQUIRED)
-find_package(Qt5OpenGL REQUIRED)
+find_package(Qt6Widgets REQUIRED)
+find_package(Qt6PrintSupport REQUIRED)
+find_package(Qt6OpenGL REQUIRED)
+find_package(Qt6OpenGLWidgets REQUIRED)
 find_package(OpenGL)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-if (Qt5Widgets_VERSION VERSION_LESS 5.4.0)
-    message(FATAL_ERROR "Minimum supported Qt5 version is 5.4.0!")
-endif()
+#if (Qt5Widgets_VERSION VERSION_LESS 5.4.0)
+#    message(FATAL_ERROR "Minimum supported Qt5 version is 5.4.0!")
+#endif()
 
 # include directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -36,7 +37,7 @@ endif()
 
 # make executable
 add_executable(${PROJECT_NAME} ${EXECTYPE} ${SRC} ${HEADERS} ${UI} ${QRC} ${TRANSLATION_BIN_FILES} ${TRANSLATION_QRC})
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::PrintSupport Qt5::OpenGL ${OPENGL_LIBRARIES} )
+target_link_libraries(${PROJECT_NAME} Qt6::Widgets Qt6::PrintSupport Qt6::OpenGL Qt6::OpenGLWidgets ${OPENGL_LIBRARIES} )
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_range_for)
 if(MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE "/W4" "/wd4251" "/wd4127" "/wd4275" "/wd4200" "/nologo" "/J" "/Zi")
@@ -67,4 +68,4 @@ endif()
 # install commands
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION "bin")
 
-include(../cmake/copy_qt5_dlls_to_bin_dir.cmake)
+#include(../cmake/copy_qt5_dlls_to_bin_dir.cmake)
