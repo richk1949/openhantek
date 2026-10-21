@@ -86,10 +86,6 @@ int main(int argc, char *argv[]) {
     QCoreApplication::setOrganizationDomain("www.openhantek.org");
     QCoreApplication::setApplicationName("OpenHantek");
     QCoreApplication::setApplicationVersion(VERSION);
-    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
-#endif
 
     bool useGles = false;
     {
@@ -109,7 +105,7 @@ int main(int argc, char *argv[]) {
 
     //////// Load translations ////////
     QTranslator qtTranslator;
-    if (qtTranslator.load("qt_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    if (qtTranslator.load("qt_" + QLocale::system().name(), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
         openHantekApplication.installTranslator(&qtTranslator);
 
     QTranslator openHantekTranslator;

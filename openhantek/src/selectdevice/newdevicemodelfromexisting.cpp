@@ -14,7 +14,7 @@ NewDeviceModelFromExisting::NewDeviceModelFromExisting(QWidget *parent) :
     ui(new Ui::NewDeviceModelFromExisting)
 {
     ui->setupUi(this);
-    connect(ui->checkBox, &QCheckBox::stateChanged,[this](int state) {
+    connect(ui->checkBox, &QCheckBox::checkStateChanged,[this](int state) {
        ui->stackedWidget->setCurrentIndex(state==Qt::Checked ? 0: 1);
     });
     ui->checkBox->setCheckState(Qt::Checked);
@@ -33,7 +33,7 @@ NewDeviceModelFromExisting::NewDeviceModelFromExisting(QWidget *parent) :
     ui->cmbUSBdevices->setModel(deviceListModel);
     deviceListModel->updateDeviceList();
 
-    connect(ui->btnRefresh, &QPushButton::clicked, [this,deviceListModel] {
+    connect(ui->btnRefresh, &QPushButton::clicked, [deviceListModel] {
         deviceListModel->updateDeviceList();
     });
 

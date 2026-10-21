@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0+
 
 #include <cmath>
-#include <iostream>
 
 #include <QColor>
 #include <QCoreApplication>
@@ -69,8 +68,8 @@ GlScope::GlScope(DsoSettingsScope *scope, DsoSettingsView *view, QWidget *parent
 GlScope::~GlScope() {/* virtual destructor necessary */}
 
 QPointF GlScope::eventToPosition(QMouseEvent *event) {
-    QPointF position((double)(event->x() - width() / 2) * DIVS_TIME / (double)width(),
-                     (double)(height() / 2 - event->y()) * DIVS_VOLTAGE / (double)height());
+    QPointF position((event->position().x() - width() / 2) * DIVS_TIME / (double)width(),
+                     (height() / 2 - event->position().y()) * DIVS_VOLTAGE / (double)height());
     if (zoomed) {
         double m1 = scope->getMarker(0);
         double m2 = scope->getMarker(1);

@@ -32,11 +32,11 @@ bool UploadFirmware::startUpload(USBDevice *device) {
         QString(":/firmware/%1-firmware.hex").arg(QString::fromStdString(device->getModel()->firmwareToken)));
     auto temp_firmware_path = std::unique_ptr<QTemporaryFile>(QTemporaryFile::createNativeFile(firmwareRes));
     if (!temp_firmware_path) return false;
-    temp_firmware_path->open();
+//    temp_firmware_path->open();
     QFile loaderRes(QString(":/firmware/%1-loader.hex").arg(QString::fromStdString(device->getModel()->firmwareToken)));
     auto temp_loader_path = std::unique_ptr<QTemporaryFile>(QTemporaryFile::createNativeFile(loaderRes));
     if (!temp_loader_path) return false;
-    temp_loader_path->open();
+//    temp_loader_path->open();
 
     /* We need to claim the first interface */
     libusb_set_auto_detach_kernel_driver(handle, 1);

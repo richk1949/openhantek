@@ -289,12 +289,12 @@ void LevelSlider::mouseMoveEvent(QMouseEvent *event) {
     if (this->_direction == Qt::RightArrow || this->_direction == Qt::LeftArrow)
         value = this->slider[pressedSlider]->maximum -
                 (this->slider[pressedSlider]->maximum - this->slider[pressedSlider]->minimum) *
-                    ((double)event->y() - this->_preMargin + 0.5) /
+                    (event->position().y() - this->_preMargin + 0.5) /
                     (this->height() - this->_preMargin - this->_postMargin - 1);
     else
         value = this->slider[pressedSlider]->minimum +
                 (this->slider[pressedSlider]->maximum - this->slider[pressedSlider]->minimum) *
-                    ((double)event->x() - this->_preMargin + 0.5) /
+                    (event->position().x() - this->_preMargin + 0.5) /
                     (this->width() - this->_preMargin - this->_postMargin - 1);
 
     // Move the slider
