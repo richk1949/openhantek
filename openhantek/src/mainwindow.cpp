@@ -32,9 +32,9 @@ MainWindow::MainWindow(HantekDsoControl *dsoControl, DsoSettings *settings, Expo
     ui->actionAbout->setIcon(iconFont->icon(fa::questioncircle));
     ui->actionOpen->setIcon(iconFont->icon(fa::folderopen));
     ui->actionSampling->setIcon(iconFont->icon(fa::pause,
-                                               {std::make_pair("text-selected-off", QChar(fa::play)),
-                                                std::make_pair("text-off", QChar(fa::play)),
-                                                std::make_pair("text-active-off", QChar(fa::play))}));
+                                               {std::make_pair("text-selected-off", QChar(static_cast<ushort>(fa::play))),
+                                                std::make_pair("text-off", QChar(static_cast<ushort>(fa::play))),
+                                                std::make_pair("text-active-off", QChar(static_cast<ushort>(fa::play)))}));
     ui->actionSettings->setIcon(iconFont->icon(fa::gear));
     ui->actionManualCommand->setIcon(iconFont->icon(fa::edit));
     ui->actionDigital_phosphor->setIcon(QIcon(":/images/digitalphosphor.svg"));

@@ -49,4 +49,4 @@ signals:
     void processingFinished(std::shared_ptr<PPresult> result);
 };
 
-Q_DECLARE_METATYPE(std::shared_ptr<PPresult>)
+//Q_DECLARE_METATYPE(std::shared_ptr<PPresult>)
