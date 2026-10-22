@@ -107,8 +107,6 @@ else()
 endif()
 set(CPACK_STRIP_FILES 1)
 
-include(CMakeDetermineSystem)
-
 # Linux RPM
 set(CPACK_RPM_PACKAGE_RELOCATABLE NO)
 set(CPACK_RPM_PACKAGE_LICENSE "GPLv2+")
